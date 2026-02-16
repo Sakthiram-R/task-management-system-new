@@ -14,13 +14,9 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'  # Default to False in production 
 
 # ALLOWED_HOSTS - support Railway domain and localhost
 # ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
-# ALLOWED_HOSTS=localhost,127.0.0.1,task-management-system-new-production.up.railway.app
-
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "task-management-system-new-production.up.railway.app",
-]
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+if 'task-management-system-new-production.up.railway.app' not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append('task-management-system-new-production.up.railway.app')
 
 
 # ========== INSTALLED APPS ==========
@@ -88,17 +84,16 @@ WSGI_APPLICATION = 'taskproject.wsgi.application'
 #             # 'PASSWORD': 'root123',
 #             # 'HOST': 'localhost',
 #             # 'PORT': '3306',
-
+# 
 #             'ENGINE': 'django.db.backends.mysql',
 #         'NAME': os.environ.get('MYSQLDATABASE'),
 #         'USER': os.environ.get('MYSQLUSER'),
 #         'PASSWORD': os.environ.get('MYSQLPASSWORD'),
 #         'HOST': os.environ.get('MYSQLHOST'),
 #         'PORT': os.environ.get('MYSQLPORT'),
-          
+#           
 #         }
 #     }
-
 
 
 if os.environ.get("MYSQLHOST"):
@@ -150,10 +145,22 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:3000",
     "http://127.0.0.1:5173",
+    "http://localhost:5174",
+    "http://127.0.0.1:5174",
     "https://task-management-systems-sigma.vercel.app",
-    # Railway & Vercel URLs will be added as env variables
-    os.getenv('FRONTEND_URL', ''),  # Set this on Railway/Vercel
 ]
+
+# Add Vercel URL from env if available
+if os.getenv('FRONTEND_URL'):
+    CORS_ALLOWED_ORIGINS.append(os.getenv('FRONTEND_URL'))
+
+# CSRF Trusted Origins for admin access from Vercel/Railway
+CSRF_TRUSTED_ORIGINS = [
+    "https://task-management-system-new-production.up.railway.app",
+    "https://task-management-systems-sigma.vercel.app",
+]
+if os.getenv('FRONTEND_URL'):
+    CSRF_TRUSTED_ORIGINS.append(os.getenv('FRONTEND_URL'))
 
 # Remove empty strings from CORS_ALLOWED_ORIGINS
 CORS_ALLOWED_ORIGINS = [url for url in CORS_ALLOWED_ORIGINS if url]
