@@ -3,7 +3,7 @@ import authService from './authService';
 const API_BASE = "https://task-management-system-new-production.up.railway.app/api";
 
 // const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
-const API_BASE_URL = "http://127.0.0.1:8000/api";
+const API_BASE_URL = "https://task-management-system-new-production.up.railway.app/api";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
