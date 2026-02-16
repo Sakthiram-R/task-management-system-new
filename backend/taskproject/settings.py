@@ -13,7 +13,8 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-your-secret-key-change-in-
 DEBUG = os.getenv('DEBUG', 'False') == 'True'  # Default to False in production
 
 # ALLOWED_HOSTS - support Railway domain and localhost
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS=localhost,127.0.0.1,task-management-system-new-production.up.railway.app
 
 # ========== INSTALLED APPS ==========
 INSTALLED_APPS = [
