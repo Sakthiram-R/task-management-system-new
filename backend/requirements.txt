@@ -3,15 +3,13 @@ dj-database-url==3.1.0
 Django==4.2
 django-cors-headers==4.2.0
 djangorestframework==3.14.0
-djangorestframework_simplejwt==5.5.1
+djangorestframework-simplejwt==5.5.1
 gunicorn==25.1.0
-mysql-connector-python==8.0.33
 mysqlclient==2.2.8
 packaging==26.0
 Pillow==10.0.0
 protobuf==3.20.3
 PyJWT==2.11.0
-PyMySQL==1.1.0
 python-dotenv==1.0.0
 pytz==2025.2
 sqlparse==0.5.5
