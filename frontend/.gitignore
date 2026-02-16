@@ -72,8 +72,8 @@ typings/
 # dotenv environment variables file
 .env
 .env.test
-.env.production
 .env.local
+# .env.production is committed for Vercel deployment
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
