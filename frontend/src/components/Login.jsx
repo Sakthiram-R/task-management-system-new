@@ -28,13 +28,13 @@ export const Login = ({ onLoginSuccess, onSwitchToRegister }) => {
         formData.username,
         formData.password
       );
-      
+
       authService.saveTokens(response.data.access, response.data.refresh);
-      
+
       // Get user details
       const userResponse = await authService.getCurrentUser();
       localStorage.setItem('user', JSON.stringify(userResponse.data));
-      
+
       onLoginSuccess();
     } catch (err) {
       setError(err.response?.data?.detail || 'Login failed. Please try again.');
@@ -100,6 +100,9 @@ export const Login = ({ onLoginSuccess, onSwitchToRegister }) => {
               Sign up here
             </button>
           </p>
+        </div>
+        <div className="debug-info" style={{ marginTop: '20px', fontSize: '10px', color: '#666', textAlign: 'center' }}>
+          API: {import.meta.env.VITE_API_BASE_URL || 'Using Localhost Fallback'}
         </div>
       </div>
     </div>
