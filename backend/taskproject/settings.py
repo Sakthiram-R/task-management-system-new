@@ -74,12 +74,20 @@ else:
     # Fallback for local development
     DATABASES = {
         'default': {
+            # 'ENGINE': 'django.db.backends.mysql',
+            # 'NAME': 'task_management_db',
+            # 'USER': 'root',
+            # 'PASSWORD': 'root123',
+            # 'HOST': 'localhost',
+            # 'PORT': '3306',
+
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'task_management_db',
-            'USER': 'root',
-            'PASSWORD': 'root123',
-            'HOST': 'localhost',
-            'PORT': '3306',
+        'NAME': os.environ.get('MYSQLDATABASE'),
+        'USER': os.environ.get('MYSQLUSER'),
+        'PASSWORD': os.environ.get('MYSQLPASSWORD'),
+        'HOST': os.environ.get('MYSQLHOST'),
+        'PORT': os.environ.get('MYSQLPORT'),
+          
         }
     }
 
