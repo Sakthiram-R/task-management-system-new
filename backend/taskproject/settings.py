@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ========== SECURITY SETTINGS ==========
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-your-secret-key-change-in-production')
-DEBUG = os.getenv('DEBUG', 'False') == 'True'  # Default to False in production
+DEBUG = os.getenv('DEBUG', 'False') == 'True'  # Default to False in production - Railway deployment
 
 # ALLOWED_HOSTS - support Railway domain and localhost
 # ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
