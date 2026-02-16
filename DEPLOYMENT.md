@@ -41,5 +41,26 @@ If your deployed Frontend is still connecting to `localhost` or showing 401 erro
     *   **IMPORTANT:** After adding/changing environment variables, you **MUST REDEPLOY** for changes to take effect. Go to Deployments -> Redeploy.
 
 2.  **Check Backend CORS:**
-    *   Ensure `CORS_ALLOWED_ORIGINS` in `settings.py` includes your Vercel domain (without trailing slash).
+
+## 5. STRICT Configuration Checklist
+
+If things are not working, **verify these exact values** in your dashboards.
+
+### A. Railway (Backend) Variables
+| Variable Name | Value | Purpose |
+| :--- | :--- | :--- |
+| `ALLOWED_HOSTS` | `*` (or your railway domain) | Allows access to Django |
+| `CSRF_TRUSTED_ORIGINS` | `https://task-management-systems-sigma.vercel.app` | Allows Login (POST requests) |
+| `FRONTEND_URL` | `https://task-management-systems-sigma.vercel.app` | Helper for CORS |
+| `SECRET_KEY` | (Any random long string) | Security |
+| `DEBUG` | `False` | Production Mode |
+
+### B. Vercel (Frontend) Variables
+| Variable Name | Value | Purpose |
+| :--- | :--- | :--- |
+| `VITE_API_BASE_URL` | `https://task-management-system-new-production.up.railway.app/api` | **CRITICAL:** Points frontend to backend. **NO TRAILING SLASH**. |
+
+### C. Vercel Redeploy
+**Did you Redeploy?** Changing variables in Vercel does **NOT** happen instantly. You must go to **Deployments -> Redeploy** for the change to work.
+
 
