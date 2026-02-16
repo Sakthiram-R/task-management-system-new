@@ -148,6 +148,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5174",
     "http://127.0.0.1:5174",
     "https://task-management-systems-sigma.vercel.app",
+    "https://task-management-systems-psi.vercel.app",
+    "https://task-management-system-new-tau.vercel.app",
 ]
 
 # Add Vercel URL from env if available
@@ -158,6 +160,8 @@ if os.getenv('FRONTEND_URL'):
 CSRF_TRUSTED_ORIGINS = [
     "https://task-management-system-new-production.up.railway.app",
     "https://task-management-systems-sigma.vercel.app",
+    "https://task-management-systems-psi.vercel.app",
+    "https://task-management-system-new-tau.vercel.app",
 ]
 if os.getenv('FRONTEND_URL'):
     CSRF_TRUSTED_ORIGINS.append(os.getenv('FRONTEND_URL'))
