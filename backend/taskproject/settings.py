@@ -63,31 +63,54 @@ WSGI_APPLICATION = 'taskproject.wsgi.application'
 
 # ========== DATABASE CONFIGURATION ==========
 # Use dj-database-url to support DATABASE_URL env variable from Railway
-if os.getenv('DATABASE_URL'):
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=os.getenv('DATABASE_URL'),
-            conn_max_age=600
-        )
-    }
-else:
-    # Fallback for local development
+# if os.getenv('DATABASE_URL'):
+#     DATABASES = {
+#         'default': dj_database_url.config(
+#             default=os.getenv('DATABASE_URL'),
+#             conn_max_age=600
+#         )
+#     }
+# else:
+#     # Fallback for local development
+#     DATABASES = {
+#         'default': {
+#             # 'ENGINE': 'django.db.backends.mysql',
+#             # 'NAME': 'task_management_db',
+#             # 'USER': 'root',
+#             # 'PASSWORD': 'root123',
+#             # 'HOST': 'localhost',
+#             # 'PORT': '3306',
+
+#             'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.environ.get('MYSQLDATABASE'),
+#         'USER': os.environ.get('MYSQLUSER'),
+#         'PASSWORD': os.environ.get('MYSQLPASSWORD'),
+#         'HOST': os.environ.get('MYSQLHOST'),
+#         'PORT': os.environ.get('MYSQLPORT'),
+          
+#         }
+#     }
+
+
+
+if os.environ.get("MYSQLHOST"):
+    # Railway / Production
     DATABASES = {
         'default': {
-            # 'ENGINE': 'django.db.backends.mysql',
-            # 'NAME': 'task_management_db',
-            # 'USER': 'root',
-            # 'PASSWORD': 'root123',
-            # 'HOST': 'localhost',
-            # 'PORT': '3306',
-
             'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQLDATABASE'),
-        'USER': os.environ.get('MYSQLUSER'),
-        'PASSWORD': os.environ.get('MYSQLPASSWORD'),
-        'HOST': os.environ.get('MYSQLHOST'),
-        'PORT': os.environ.get('MYSQLPORT'),
-          
+            'NAME': os.environ.get('MYSQLDATABASE'),
+            'USER': os.environ.get('MYSQLUSER'),
+            'PASSWORD': os.environ.get('MYSQLPASSWORD'),
+            'HOST': os.environ.get('MYSQLHOST'),
+            'PORT': os.environ.get('MYSQLPORT'),
+        }
+    }
+else:
+    # Local development (SQLite)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
 
