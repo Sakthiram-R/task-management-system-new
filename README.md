@@ -1,33 +1,61 @@
 # 📋 Task Management System
+Author: Sakthiram
 
 A full-stack CRUD application built with **React**, **Django REST Framework**, and **MySQL**. This project demonstrates industry-standard practices for building scalable web applications.
 
+It includes:
+- Frontend Development
+- Backend API Development
+- Database Integration
+- Authentication & Authorization
+- Deployment Configuration
+
+This project demonstrates practical implementation of modern web development concepts.
+
+
+
 ## 🎯 Features
+🎯 Features
 
-✅ **CRUD Operations**
-- Create new tasks
-- Read/View all tasks with pagination
-- Update existing tasks
-- Delete tasks
+✅ Authentication & Authorization
 
-✅ **Advanced Features**
-- Mark tasks as completed/pending
-- Filter by status (All, Pending, Completed)
-- Search tasks by title and description
-- Task priority levels (Low, Medium, High)
-- Due date management
-- Task statistics and progress tracking
-- Responsive mobile-friendly UI
+User Registration & Login
 
-✅ **Technical Highlights**
-- RESTful API with Django REST Framework
-- React functional components with Hooks
-- Comprehensive error handling
-- Form validation on frontend and backend
-- Loading states and user feedback
-- Pagination with customizable page size
-- CORS enabled for cross-origin requests
-- MySQL database with optimized indexes
+JWT-based Authentication
+
+Access & Refresh Tokens
+
+Protected API Endpoints
+
+Secure password hashing
+
+Role-based access (extendable)
+
+✅ CRUD Operations
+
+Create new tasks
+
+Read/View all tasks with pagination
+
+Update existing tasks
+
+Delete tasks
+
+✅ Advanced Features
+
+Mark tasks as completed/pending
+
+Filter by status (All, Pending, Completed)
+
+Search tasks by title and description
+
+Task priority levels (Low, Medium, High)
+
+Due date management
+
+Task statistics and progress tracking
+
+Responsive mobile-friendly UI
 
 ## 📋 Project Structure
 
@@ -352,109 +380,67 @@ npm run dev
 - ✅ Use HTTPS for API calls
 
 ---
+📦 Deployment Guide
+🚂 Deploy Backend to Railway
+1. Push Code to GitHub
+git add .
+git commit -m "Production Ready"
+git push origin main
 
-## 📦 Deployment Guide
+2. Deploy on Railway
 
-### Deploy Django to Heroku
+Go to railway.app
 
-#### 1. Install Heroku CLI
-```bash
-brew install heroku/brew/heroku  # macOS
-# or download from heroku.com
-```
+Create New Project
 
-#### 2. Login to Heroku
-```bash
-heroku login
-```
+Select “Deploy from GitHub”
 
-#### 3. Create Heroku App
-```bash
-cd backend
-heroku create your-app-name
-```
+Choose backend repository
 
-#### 4. Add Procfile
-```
-web: gunicorn taskproject.wsgi
-```
+Add Environment Variables:
 
-#### 5. Install Production Dependencies
-```bash
-pip install gunicorn
-pip freeze > requirements.txt
-```
+SECRET_KEY
 
-#### 6. Configure Environment Variables
-```bash
-heroku config:set SECRET_KEY=your-secret-key
-heroku config:set DEBUG=False
-heroku config:set ALLOWED_HOSTS=your-app-name.herokuapp.com
-```
+DEBUG=False
 
-#### 7. Push to Heroku
-```bash
-git push heroku main
-```
+DATABASE_URL (Railway auto generates)
 
-#### 8. Run Migrations
-```bash
-heroku run python manage.py migrate
-```
+ALLOWED_HOSTS=your-domain
 
-### Deploy React to Vercel
+3. Run Migrations
 
-#### 1. Install Vercel CLI
-```bash
-npm install -g vercel
-```
+Railway Console:
 
-#### 2. Login to Vercel
-```bash
-vercel login
-```
+python manage.py migrate
 
-#### 3. Deploy Frontend
-```bash
-cd frontend
-vercel
-```
+▲ Deploy Frontend to Vercel
+1. Push Frontend to GitHub
+2. Import Project in Vercel
 
-#### 4. Configure Environment Variables
-In Vercel dashboard:
-- Settings → Environment Variables
-- Add `VITE_API_URL=https://your-heroku-app.herokuapp.com/api`
+Go to vercel.com
 
-#### 5. Redeploy
-```bash
-vercel --prod
-```
+Import GitHub repository
+
+Set Environment Variable:
+VITE_API_URL=https://your-railway-app-url/api
+
+3. Deploy
 
 ---
 
 ## 📊 Database Schema
+Database Configuration
+Local Development
 
-### Task Table
-```sql
-CREATE TABLE tasks_task (
-  id: BigAutoField (Primary Key)
-  title: CharField(255) - Required
-  description: TextField - Optional
-  status: BooleanField (0=Pending, 1=Completed) - Default: False
-  priority: CharField - Options: (low, medium, high)
-  due_date: DateTimeField - Optional
-  created_at: DateTimeField - Auto-generated
-  updated_at: DateTimeField - Auto-updated
-);
+SQLite is used for easy local setup.
 
-Indexes:
-- status (for filtering)
-- created_at (for sorting)
-- status + created_at (composite index)
-- priority
-- due_date
-```
+No additional installation required.
 
+Production
+
+Railway provides managed PostgreSQL/MySQL database.
+
+Database URL is configured via environment variables.
 ---
 
 ## 🔄 Data Flow
@@ -484,24 +470,37 @@ Component Re-renders with New Data
 ---
 
 ## 📝 Technologies Used
+Backend
 
-### Backend
-- **Django** 4.2 - Web Framework
-- **Django REST Framework** 3.14 - REST API
-- **django-cors-headers** - CORS Support
-- **MySQL Connector** - Database Driver
-- **Python Dotenv** - Environment Management
+Django 4.2 - Web Framework
 
-### Frontend
-- **React** 18.2 - UI Library
-- **Vite** - Build Tool
-- **Axios** - HTTP Client
-- **CSS3** - Styling (No Framework)
+Django REST Framework 3.14 - REST API
 
-### Database
-- **MySQL** 5.7+ - Relational Database
+Simple JWT - Token Authentication
 
----
+django-cors-headers - CORS Support
+
+SQLite - Local Development Database
+
+MySQL - Production Database
+
+Python Dotenv - Environment Management
+
+Frontend
+
+React 18.2 - UI Library
+
+Vite - Build Tool
+
+Axios - HTTP Client
+
+CSS3 - Styling
+
+Deployment
+
+Railway - Backend Hosting
+
+Vercel - Frontend Hosting
 
 ## 🎓 Learning Outcomes
 
@@ -540,7 +539,7 @@ This project is open source and available under the MIT License.
 
 To enhance this project further, consider adding:
 
-- [ ] User authentication & authorization
+
 - [ ] Task categories/tags
 - [ ] Task comments and attachments
 - [ ] Recurring tasks
@@ -553,4 +552,5 @@ To enhance this project further, consider adding:
 
 ---
 
-**Built with ❤️ by Your Development Team**
+Designed and Developed by Sakthiram
+Full Stack Developer | 2026

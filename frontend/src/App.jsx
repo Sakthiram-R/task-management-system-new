@@ -1,3 +1,18 @@
+/*
+==========================================================
+ Task Management System - React Frontend
+
+ Designed & Developed by Sakthiram
+ © 2026 Sakthiram. All Rights Reserved.
+
+ Main Application Component:
+ - Authentication Handling (JWT)
+ - Task CRUD Management
+ - Pagination, Filtering, Search
+ - Statistics Dashboard Integration
+==========================================================
+*/
+
 import React, { useState, useEffect } from 'react';
 import { TaskForm } from './components/TaskForm';
 import { TaskList } from './components/TaskList';
@@ -300,7 +315,7 @@ function App() {
       </main>
 
       <footer className="app-footer">
-        <p>&copy; 2026 Task Management System. Built with React & Django.</p>
+        <p>&copy; 2026 Sakthiram. All Rights Reserved.</p>
       </footer>
     </div>
   );

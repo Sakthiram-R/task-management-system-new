@@ -1,3 +1,18 @@
+/*
+==========================================================
+ Task Management System - React Frontend
+
+ Designed & Developed by Sakthiram
+ © 2026 Sakthiram. All Rights Reserved.
+
+ Main Application Component:
+ - Authentication Handling (JWT)
+ - Task CRUD Management
+ - Pagination, Filtering, Search
+ - Statistics Dashboard Integration
+==========================================================
+*/
+
 import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api';
